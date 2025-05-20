@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Think Mortgage - Expert Mortgage Solutions with Anthony Schlotthauer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;700&display=swap">
+    <style>
+        :root {
+            --primary-color: #b400ff;
+            --secondary-color: #f4f6f8;
+            --accent-color: #ffffff;
+            --text-color: #000000;
+            --light-text: rgba(255, 255, 255, 0.7);
+        }
+        .text-yellow-300 {
+  color: #4a03688a;
+}
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .font-script {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .active-page {
+            display: block;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .btn-primary,
+        a.btn-primary,
+        button.btn-primary {
+            display: inline-block;
+            padding: 12px 24px;
+            border: 2px solid var(--primary-color);
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none !important;
+            text-align: center;
+            line-height: normal;
+            background-color: var(--primary-color);
+            color: white !important;
+        }
+        .btn-primary:hover,
+a.btn-primary:hover,
+button.btn-primary:hover {
+  background-color: var(--primary-color) !important; /* stays purple */
+  border: 1px solid white !important;              /* thin white border */
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+        .btn-secondary,
+        a.btn-secondary,
+        button.btn-secondary {
+            display: inline-block;
+            padding: 10px 22px;
+            border: 2px solid var(--primary-color);
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none !important;
+            text-align: center;
+            line-height: normal;
+            background-color: transparent;
+            color: var(--primary-color) !important;
+        }
+        .btn-secondary:hover,
+        a.btn-secondary:hover,
+        button.btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        a.btn-apply-banner {
+            display: inline-block;
+            padding: 10px 22px;
+            border: 2px solid var(--accent-color);
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none !important;
+            text-align: center;
+            line-height: normal;
+            background-color: var(--accent-color);
+            color: #b400ff !important;
+        }
+        a.btn-apply-banner:hover {
+             background-color: var(--secondary-color);
+             color: var(--primary-color) !important;
+             transform: translateY(-2px);
+             border-color: var(--secondary-color);
+        }
+
+        a.btn-cta-white {
+            display: inline-block;
+            padding: 10px 22px;
+            border: 2px solid var(--secondary-color);
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none !important;
+            text-align: center;
+            line-height: normal;
+            background-color: var(--secondary-color);
+            color: var(--primary-color) !important;
+        }
+        a.btn-cta-white:hover {
+            background-color: white;
+            border-color: white;
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        a.btn-cta-bordered {
+            display: inline-block;
+            padding: 10px 22px;
+            border: 2px solid white;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none !important;
+            text-align: center;
+            line-height: normal;
+            background-color: transparent;
+            color: white !important;
+        }
+        a.btn-cta-bordered:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white !important;
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            height: 3px;
+            width: 60px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        .text-center .section-title:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .service-card, .benefit-card {
+            background-color: white;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .service-card:hover, .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card {
+            background-color: white;
+            position: relative;
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .testimonial-card:before {
+            content: '\201C';
+            font-family: 'Cormorant Garamond', serif;
+            position: absolute;
+            top: -25px;
+            left: 20px;
+            font-size: 80px;
+            color: var(--primary-color);
+            opacity: 0.2;
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .footer a {
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: white;
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            padding-bottom: 5px;
+            cursor: pointer;
+        }
+        .nav-link:hover,
+.nav-link.active {
+  color: var(--primary-color) !important; 
+}
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        .banner {
+            background-color: var(--primary-color);
+            color: white; /* Main banner text color is white */
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .banner:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('img/hero-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            filter: grayscale(30%);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nmls-info {
+            font-size: 0.85rem;
+            color: var(--light-text);
+            margin-top: 1rem;
+        }
+        .footer .nmls-info {
+            color: #a0aec0;
+            font-size: 0.8rem;
+        }
+        .footer .nmls-info a {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+         .footer .nmls-info a:hover {
+             color: white;
+         }
+
+    </style>
+</head>
+<body>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto py-5 px-6 flex justify-between items-center">
+            <a href="#" class="block" onclick="showPage('home', event)">
+                 <img src="img/logo.webp" alt="Think Mortgage Logo" class="h-16 md:h-20 w-auto">
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#" class="nav-link" onclick="showPage('home', event)">Home</a>
+                <a href="#" class="nav-link" onclick="showPage('about', event)">About Anthony</a>
+                <a href="#" class="nav-link" onclick="showPage('services', event)">Loan Programs</a>
+                <a href="#" class="nav-link" onclick="showPage('why-choose-us', event)">Why Think Mortgage</a>
+                <a href="#" class="nav-link" onclick="showPage('contact', event)">Contact</a>
+                <a href="#apply-now-link" target="_blank" class="btn-primary ml-4">Apply Now</a>
+            </nav>
+            <div class="md:hidden flex items-center">
+                 <a href="#apply-now-link" target="_blank" class="text-sm font-medium mr-4" style="color: var(--primary-color);">Apply Now</a>
+                <button id="menu-toggle" class="text-gray-600 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-white w-full py-4 px-6 shadow-md">
+            <nav class="flex flex-col space-y-4">
+                <a href="#" class="nav-link py-2" onclick="showPage('home', event); closeMobileMenu();">Home</a>
+                <a href="#" class="nav-link py-2" onclick="showPage('about', event); closeMobileMenu();">About Anthony</a>
+                <a href="#" class="nav-link py-2" onclick="showPage('services', event); closeMobileMenu();">Loan Programs</a>
+                <a href="#" class="nav-link py-2" onclick="showPage('why-choose-us', event); closeMobileMenu();">Why Think Mortgage</a>
+                <a href="#" class="nav-link py-2" onclick="showPage('contact', event); closeMobileMenu();">Contact</a>
+                <a href="#apply-now-link" target="_blank" class="btn-primary w-full text-center mt-2">Apply Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="page-section active-page">
+        <div class="banner">
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6"><span class="text-white">Expert Mortgage Solutions with a</span> <span class="font-script text-yellow-300">Personalized Approach</span></h1>
+                    <p class="text-xl mb-8">Experience, Expertise, and Efficiency You Can Trust. Anthony Schlotthauer is your dedicated partner for achieving your homeownership goals.</p>
+                    <div class="flex flex-wrap gap-4 justify-center">
+                        <a href="https://link.growsimple.tech/widget/survey/YOUR_SURVEY_ID" target="_blank" class="btn-primary">Get Started</a>
+                        <a href="#apply-now-link" target="_blank" class="btn-apply-banner">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-20" style="background-color: var(--secondary-color);">
+             <div class="container mx-auto px-6">
+                 <div class="grid md:grid-cols-2 gap-16 items-center">
+                     <div>
+                         <h2 class="text-4xl font-bold mb-6 section-title">Meet Anthony: Your Dedicated Mortgage Expert</h2>
+                         <p class="text-lg mb-4">With over <strong>25 years</strong> in the mortgage industry, I've had the privilege of helping more than <strong>500 families</strong> navigate the path to homeownership. My commitment is to provide clear, honest guidance and personalized lending strategies.</p>
+                         <p class="text-lg mb-4">At Think Mortgage, we underwrite in-house, ensuring speed, transparency, and reliable closings. Whether you're a first-time buyer or a seasoned investor, I'm here to craft a financing plan that aligns with your goals.</p>
+                         <p class="text-lg mb-8">My mission is to make your journey to homeownership straightforward and successful. If you're looking for a partner who prioritizes your needs, <a href="#" onclick="showPage('contact', event)" class="font-semibold hover:underline" style="color: var(--primary-color);">I'd love to connect</a>.</p>
+                         <div class="mt-8">
+                              <button class="btn-primary" onclick="showPage('about', event)">Learn More About Anthony</button>
+                         </div>
+                     </div>
+                     <div class="rounded-lg overflow-hidden shadow-xl">
+                         <img src="img/anthony2.jpg" alt="Anthony Schlotthauer - Think Mortgage" class="w-full h-auto object-cover">
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+         <div class="py-20 bg-white">
+              <div class="container mx-auto px-6">
+                  <div class="text-center mb-16">
+                      <h2 class="text-4xl font-bold mb-4 section-title inline-block">Comprehensive Loan Programs</h2>
+                      <p class="text-lg text-gray-600 max-w-3xl mx-auto">A wide range of financing options tailored to your unique situation, from conventional loans to specialized financing for investors and international clients.</p>
+                  </div>
+                  <div class="grid md:grid-cols-3 gap-10">
+                      <div class="service-card p-8 text-center">
+                          <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
+                              <i class="fas fa-home text-2xl" style="color: var(--primary-color);"></i>
+                          </div>
+                          <h3 class="text-2xl font-semibold mb-4">Core Mortgages</h3>
+                          <p class="text-gray-600 mb-6 text-sm">Conventional, FHA, VA, USDA, and more. Stable, low rates, and flexible options for every buyer.</p>
+                          <a href="#" class="font-medium hover:underline text-sm" style="color: var(--primary-color);" onclick="showPage('services', event)">Learn More →</a>
+                      </div>
+                      <div class="service-card p-8 text-center">
+                          <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
+                              <i class="fas fa-file-invoice-dollar text-2xl" style="color: var(--primary-color);"></i>
+                          </div>
+                          <h3 class="text-2xl font-semibold mb-4">Alternative Docs</h3>
+                          <p class="text-gray-600 mb-6 text-sm">Solutions for self-employed, investors, or those with non-traditional income. Bank statements, DSCR, Asset Depletion.</p>
+                           <a href="#" class="font-medium hover:underline text-sm" style="color: var(--primary-color);" onclick="showPage('services', event)">Learn More →</a>
+                      </div>
+                      <div class="service-card p-8 text-center">
+                          <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
+                              <i class="fas fa-hard-hat text-2xl" style="color: var(--primary-color);"></i>
+                          </div>
+                          <h3 class="text-2xl font-semibold mb-4">Construction & Niche</h3>
+                          <p class="text-gray-600 mb-6 text-sm">New construction, unique properties, ITIN loans, Foreign National programs, and commercial financing.</p>
+                          <a href="#" class="font-medium hover:underline text-sm" style="color: var(--primary-color);" onclick="showPage('services', event)">Learn More →</a>
+                      </div>
+                  </div>
+                  <div class="text-center mt-14">
+                      <button class="btn-primary" onclick="showPage('services', event)">View All Loan Programs</button>
+                  </div>
+              </div>
+          </div>
+
+          <div class="py-20" style="background-color: var(--secondary-color);">
+               <div class="container mx-auto px-6">
+                   <div class="text-center mb-16">
+                       <h2 class="text-4xl font-bold mb-4">Client Success Stories</h2>
+                       <div class="text-center text-yellow-500 text-2xl mb-4">
+                           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                       </div>
+                       <p class="text-lg text-gray-600 max-w-3xl mx-auto">Hear how Anthony's dedication and expertise have helped families achieve their homeownership dreams.</p>
+                   </div>
+                   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <div class="testimonial-card rounded-lg">
+                           <p class="text-gray-700 italic mb-6 leading-relaxed text-sm">"Anthony was incredible! He made the complex process of buying our first home so smooth and understandable. We felt supported every step of the way and couldn't be happier in our new place!"</p>
+                           <div class="flex items-center">
+                               <img src="img/client-avatar-1.jpg" alt="Don Zanelotti" class="w-12 h-12 rounded-full mr-4 border-2 border-accent-color p-0.5">
+                               <div>
+                                   <h4 class="font-semibold text-md">Don Zanelotti</h4>
+                                
+                               </div>
+                           </div>
+                       </div>
+                       <div class="testimonial-card rounded-lg">
+                           <p class="text-gray-700 italic mb-6 leading-relaxed text-sm">"Working with Think Mortgage for my investment property was a game-changer. Anthony's knowledge of DSCR loans and his quick turnaround was impressive. Highly recommend!"</p>
+                           <div class="flex items-center">
+                               <img src="img/client-avatar-2.jpg" alt="Mark Davis" class="w-12 h-12 rounded-full mr-4 border-2 border-accent-color p-0.5">
+                               <div>
+                                   <h4 class="font-semibold text-md"> Justin DeFillippo</h4>
+                                
+                               </div>
+                           </div>
+                       </div>
+                       <div class="testimonial-card rounded-lg">
+                           <p class="text-gray-700 italic mb-6 leading-relaxed text-sm">"My first house! ClOSED in 20 days. Anthony helped me with my first mortgage and the process was flawless. Anthony is an exceptional worker he gets things done fast and we ended up being able to close in under 20 days."</p>
+                           <div class="flex items-center">
+                               <img src="img/client-avatar-3.jpg" alt="Anthony Yannuzzi" class="w-12 h-12 rounded-full mr-4 border-2 border-accent-color p-0.5">
+                               <div>
+                                   <h4 class="font-semibold text-md">Anthony Yannuzzi </h4>
+                                
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="py-16" style="background-color: var(--primary-color);">
+               <div class="container mx-auto px-6 text-center">
+                   <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to Secure Your Dream Home?</h2>
+                   <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Let's discuss your homeownership goals. Schedule a consultation or start your application today!</p>
+                   <div class="flex flex-wrap justify-center gap-4">
+                       <a href="https://link.growsimple.tech/widget/survey/YOUR_SURVEY_ID" target="_blank" class="btn-cta-white">Schedule Consultation</a>
+                       <a href="#apply-now-link" target="_blank" class="btn-cta-bordered">Apply Now</a>
+                   </div>
+               </div>
+           </div>
+       </section>
+
+       <section id="about" class="page-section">
+           <div class="banner">
+               <div class="container mx-auto px-6 relative z-10 text-center">
+                   <div class="max-w-2xl mx-auto">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                        <span class="block text-white">About</span>
+                        <span class="block font-script text-yellow-300">Think Mortgage</span>
+                      </h1>                       <p class="text-xl mb-8">Learn about Anthony Schlotthauer, our philosophy, and our commitment to your home financing success.</p>
+                   </div>
+               </div>
+           </div>
+
+           <div class="py-20 bg-white">
+               <div class="container mx-auto px-6">
+                   <div class="md:flex items-center gap-12 md:gap-16">
+                       <div class="md:w-2/5 mb-10 md:mb-0">
+                            <img src="img/anthony.jpg" alt="Anthony Schlotthauer - Think Mortgage" class="w-full h-auto max-w-md mx-auto md:mx-0 rounded-lg shadow-lg">
+                       </div>
+                       <div class="md:w-3/5">
+                           <h2 class="text-4xl font-bold mb-6 section-title">Meet Anthony Schlotthauer</h2>
+                           <p class="text-lg text-gray-500 font-medium mb-6 -mt-6">Your Dedicated Mortgage Expert | NMLS #280499</p>
+                           <div class="bg-secondary-color p-6 md:p-8 rounded-lg shadow-sm relative border-l-4" style="border-color: var(--accent-color);">
+                               <span class="absolute top-0 left-0 -mt-3 -ml-3 text-7xl opacity-10" style="color: var(--primary-color); font-family: 'Cormorant Garamond', serif;">“</span>
+                               <blockquote class="relative z-10">
+                                   <p class="text-xl md:text-2xl italic mb-6 leading-relaxed" style="color: var(--text-color);">
+                                        "My mission is to make homeownership achievable and straightforward—so you can focus on what matters most: building your future."
+                                   </p>
+                                   <footer class="mt-4 text-lg font-semibold text-right" style="color: var(--primary-color); font-family: 'Cormorant Garamond', serif;">
+                                        - Anthony Schlotthauer
+                                   </footer>
+                               </blockquote>
+                           </div>
+                           <p class="text-lg mt-8 mb-4 leading-relaxed">
+                                With over <strong>25 years</strong> of dedicated experience in the mortgage industry, I have had the honor of assisting over <strong>500 families</strong> in navigating the complexities of home financing. My approach is rooted in providing clear, honest communication and personalized lending strategies tailored to each client's unique circumstances.
+                           </p>
+                           <p class="text-lg mb-4 leading-relaxed">
+                                As a direct lender at Think Mortgage, we manage the entire loan process in-house. This means faster underwriting, greater transparency, and the certainty of reliable closings. Whether you're stepping into the market for the first time, looking to invest, or have specialized financing needs, I am committed to developing a plan that aligns perfectly with your aspirations.
+                           </p>
+                           <div class="flex space-x-4 mt-8">
+                                <a href="mailto:aschlotthauer@thinkmtg.com" class="text-gray-500 hover:text-primary-color text-2xl">
+                                    <i class="far fa-envelope"></i>
+                                </a>
+                                <a href="tel:+18058132539" class="text-gray-500 hover:text-primary-color text-2xl">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="py-20" style="background-color: var(--secondary-color);">
+               <div class="container mx-auto px-6">
+                   <div class="text-center mb-16">
+                       <h2 class="text-4xl font-bold mb-4 section-title inline-block">Our Core Values</h2>
+                       <p class="text-lg text-gray-600 max-w-3xl mx-auto">The principles guiding our work and commitment to you.</p>
+                   </div>
+                   <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+                       <div class="bg-white p-8 rounded-lg shadow-md text-center benefit-card">
+                           <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6"> <i class="fas fa-award text-2xl" style="color: var(--primary-color);"></i> </div>
+                           <h3 class="text-2xl font-semibold mb-4">Proven Expertise</h3>
+                           <p class="text-gray-600 text-sm">25+ years in lending, 500+ families served with dedication.</p>
+                       </div>
+                       <div class="bg-white p-8 rounded-lg shadow-md text-center benefit-card">
+                           <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6"> <i class="fas fa-percentage text-2xl" style="color: var(--primary-color);"></i> </div>
+                           <h3 class="text-2xl font-semibold mb-4">Competitive Rates</h3>
+                           <p class="text-gray-600 text-sm">Market-leading pricing with transparent, no hidden-fee structures.</p>
+                       </div>
+                       <div class="bg-white p-8 rounded-lg shadow-md text-center benefit-card">
+                            <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6"> <i class="fas fa-clock text-2xl" style="color: var(--primary-color);"></i> </div>
+                           <h3 class="text-2xl font-semibold mb-4">Reliable Closings</h3>
+                           <p class="text-gray-600 text-sm">On-time, every time, thanks to efficient in-house underwriting.</p>
+                       </div>
+                       <div class="bg-white p-8 rounded-lg shadow-md text-center benefit-card">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6"> <i class="fas fa-handshake text-2xl" style="color: var(--primary-color);"></i> </div>
+                           <h3 class="text-2xl font-semibold mb-4">Dedicated Service</h3>
+                           <p class="text-gray-600 text-sm">Clear communication and personal guidance from start to finish.</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="py-20 bg-white border-t border-gray-200">
+               <div class="container mx-auto px-6">
+                   <div class="grid md:grid-cols-2 gap-16 items-center">
+                       <div>
+                           <h2 class="text-4xl font-bold mb-6 section-title">Direct Lender Advantage</h2>
+                           <p class="text-lg mb-6 leading-relaxed">As a direct lender, Think Mortgage controls the entire loan process from application to closing. This integration allows us to offer significant advantages: faster turn times, more flexible underwriting capabilities for complex situations, and direct accountability. </p>
+                           <p class="text-lg mb-6 leading-relaxed">We're not just processing your loan; we're investing in your success. This commitment means we work tirelessly to find the best possible financing solutions, tailored to your specific needs and financial goals, ensuring a smooth and predictable path to homeownership.</p>
+                           <div class="nmls-info">
+                               Think Mortgage NMLS #125182 | Anthony Schlotthauer NMLS #280499
+                           </div>
+                       </div>
+                       <div class="rounded-lg overflow-hidden shadow-xl">
+                           <img src="img/direct-lender-advantage.jpg" alt="Think Mortgage Direct Lender Advantage" class="w-full h-auto">
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="py-16" style="background-color: var(--primary-color);">
+               <div class="container mx-auto px-6 text-center">
+                   <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Let's Build Your Future</h2>
+                   <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Ready to discuss your home financing needs? Connect with Anthony today.</p>
+                   <div class="flex flex-wrap justify-center gap-4">
+                       <a href="https://link.growsimple.tech/widget/survey/YOUR_SURVEY_ID" target="_blank" class="btn-cta-white">Schedule Consultation</a>
+                       <a href="#apply-now-link" target="_blank" class="btn-cta-bordered">Apply Now</a>
+                   </div>
+               </div>
+           </div>
+       </section>
+
+       <section id="services" class="page-section">
+           <div class="banner">
+               <div class="container mx-auto px-6 relative z-10 text-center">
+                   <div class="max-w-2xl mx-auto">
+                       <h1 class="text-5xl md:text-6xl font-bold mb-6"><span class="text-white">Our Loan Programs</span></h1>
+                       <p class="text-xl mb-8">Diverse mortgage solutions tailored for every homebuyer and investor.</p>
+                   </div>
+               </div>
+           </div>
+           <div class="py-20 bg-white">
+               <div class="container mx-auto px-6">
+                   <div class="text-center mb-16">
+                       <h2 class="text-4xl font-bold mb-4 section-title inline-block">Find Your Perfect Loan</h2>
+                       <p class="text-lg text-gray-600 max-w-3xl mx-auto">Explore our comprehensive suite of mortgage products designed to meet your specific financial goals, whether you're buying your first home, investing, or need specialized financing.</p>
+                   </div>
+                   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                       <div class="service-card p-6 rounded-lg shadow-md flex flex-col">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-4">
+                               <i class="fas fa-hand-holding-usd text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Conventional Loans</h3>
+                           <p class="text-gray-600 mb-6 text-sm flex-grow">Standard mortgages offering stable rates and terms for borrowers with good credit.</p>
+                           <a href="#" class="font-medium hover:underline text-sm mt-auto" style="color: var(--primary-color);" onclick="showPage('contact', event)">Inquire Now →</a>
+                       </div>
+                       <div class="service-card p-6 rounded-lg shadow-md flex flex-col">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-4">
+                               <i class="fas fa-house-user text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">FHA Loans</h3>
+                           <p class="text-gray-600 mb-6 text-sm flex-grow">Ideal for first-time homebuyers, requiring lower minimum credit scores and down payments.</p>
+                           <a href="#" class="font-medium hover:underline text-sm mt-auto" style="color: var(--primary-color);" onclick="showPage('contact', event)">Inquire Now →</a>
+                       </div>
+                       <div class="service-card p-6 rounded-lg shadow-md flex flex-col">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-4">
+                               <i class="fas fa-medal text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">VA Loans</h3>
+                           <p class="text-gray-600 mb-6 text-sm flex-grow">Exclusive benefits for eligible U.S. veterans, active-duty military personnel, and surviving spouses, often with no down payment requirement.</p>
+                           <a href="#" class="font-medium hover:underline text-sm mt-auto" style="color: var(--primary-color);" onclick="showPage('contact', event)">Inquire Now →</a>
+                       </div>
+                       <div class="service-card p-6 rounded-lg shadow-md flex flex-col">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-4">
+                               <i class="fas fa-leaf text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">USDA Loans</h3>
+                           <p class="text-gray-600 mb-6 text-sm flex-grow">Government-backed loans for eligible rural and suburban homebuyers, often requiring no down payment.</p>
+                           <a href="#" class="font-medium hover:underline text-sm mt-auto" style="color: var(--primary-color);" onclick="showPage('contact', event)">Inquire Now →</a>
+                       </div>
+                       <div class="service-card p-6 rounded-lg shadow-md flex flex-col">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-4">
+                               <i class="fas fa-chart-line text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Jumbo Loans</h3>
+                           <p class="text-gray-600 mb-6 text-sm flex-grow">Financing for loan amounts that exceed conforming loan limits, suitable for high-value properties.</p>
+                           <a href="#" class="font-medium hover:underline text-sm mt-auto" style="color: var(--primary-color);" onclick="showPage('contact', event)">Inquire Now →</a>
+                       </div>
+                       <div class="service-card p-6 rounded-lg shadow-md flex flex-col">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-4">
+                               <i class="fas fa-credit-card text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Bank Statement Loans</h3>
+                           <p class="text-gray-600 mb-6 text-sm flex-grow">Alternative documentation loans for self-employed individuals using bank statements to verify income.</p>
+                           <a href="#" class="font-medium hover:underline text-sm mt-auto" style="color: var(--primary-color);" onclick="showPage('contact', event)">Inquire Now →</a>
+                       </div>
+                       <div class="service-card p-6 rounded-lg shadow-md flex flex-col">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-4">
+                               <i class="fas fa-building text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">DSCR Loans</h3>
+                           <p class="text-gray-600 mb-6 text-sm flex-grow">Debt Service Coverage Ratio loans for real estate investors, qualifying based on the property's potential rental income.</p>
+                           <a href="#" class="font-medium hover:underline text-sm mt-auto" style="color: var(--primary-color);" onclick="showPage('contact', event)">Inquire Now →</a>
+                       </div>
+                       <div class="service-card p-6 rounded-lg shadow-md flex flex-col">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-4">
+                               <i class="fas fa-money-bill-wave text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Asset Depletion Loans</h3>
+                           <p class="text-gray-600 mb-6 text-sm flex-grow">For borrowers with significant assets who may not have traditional income sources.</p>
+                           <a href="#" class="font-medium hover:underline text-sm mt-auto" style="color: var(--primary-color);" onclick="showPage('contact', event)">Inquire Now →</a>
+                       </div>
+                       <div class="service-card p-6 rounded-lg shadow-md flex flex-col">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-4">
+                               <i class="fas fa-tools text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Construction Loans</h3>
+                           <p class="text-gray-600 mb-6 text-sm flex-grow">Financing for building a new home, covering the cost of construction.</p>
+                           <a href="#" class="font-medium hover:underline text-sm mt-auto" style="color: var(--primary-color);" onclick="showPage('contact', event)">Inquire Now →</a>
+                       </div>
+                       <div class="service-card p-6 rounded-lg shadow-md flex flex-col">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-4">
+                               <i class="fas fa-globe text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Foreign National Loans</h3>
+                           <p class="text-gray-600 mb-6 text-sm flex-grow">Mortgage options for non-U.S. citizens looking to purchase property in the United States.</p>
+                           <a href="#" class="font-medium hover:underline text-sm mt-auto" style="color: var(--primary-color);" onclick="showPage('contact', event)">Inquire Now →</a>
+                       </div>
+                        <div class="service-card p-6 rounded-lg shadow-md flex flex-col">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-4">
+                               <i class="fas fa-id-card text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">ITIN Loans</h3>
+                           <p class="text-gray-600 mb-6 text-sm flex-grow">Financing solutions for individuals who have an Individual Taxpayer Identification Number but not a Social Security Number.</p>
+                           <a href="#" class="font-medium hover:underline text-sm mt-auto" style="color: var(--primary-color);" onclick="showPage('contact', event)">Inquire Now →</a>
+                       </div>
+                       <div class="service-card p-6 rounded-lg shadow-md flex flex-col">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-4">
+                               <i class="fas fa-city text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Commercial Financing</h3>
+                           <p class="text-gray-600 mb-6 text-sm flex-grow">Loan options for purchasing or refinancing commercial properties.</p>
+                           <a href="#" class="font-medium hover:underline text-sm mt-auto" style="color: var(--primary-color);" onclick="showPage('contact', event)">Inquire Now →</a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="py-16" style="background-color: var(--primary-color);">
+               <div class="container mx-auto px-6 text-center">
+                   <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Find the Right Loan for You</h2>
+                   <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Contact us today to discuss your needs and explore your options.</p>
+                   <div class="flex flex-wrap justify-center gap-4">
+                       <a href="https://link.growsimple.tech/widget/survey/YOUR_SURVEY_ID" target="_blank" class="btn-cta-white">Schedule Consultation</a>
+                       <a href="#apply-now-link" target="_blank" class="btn-cta-bordered">Apply Now</a>
+                   </div>
+               </div>
+           </div>
+       </section>
+
+        <section id="why-choose-us" class="page-section">
+           <div class="banner">
+               <div class="container mx-auto px-6 relative z-10 text-center">
+                   <div class="max-w-2xl mx-auto">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                        <span class="block text-white">Why Choose</span>
+                        <span class="block font-script text-yellow-300">Think Mortgage</span>
+                      </h1>                       <p class="text-xl mb-8">Discover the advantages of working with Anthony Schlotthauer and Think Mortgage.</p>
+                   </div>
+               </div>
+           </div>
+           <div class="py-20 bg-white">
+               <div class="container mx-auto px-6">
+                   <div class="text-center mb-16">
+                       <h2 class="text-4xl font-bold mb-4 section-title inline-block">Your Advantage with Think Mortgage</h2>
+                       <p class="text-lg text-gray-600 max-w-3xl mx-auto">We are committed to providing an exceptional mortgage experience with a focus on expertise, efficiency, and personalized service.</p>
+                   </div>
+                   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                       <div class="benefit-card p-8 text-center">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
+                               <i class="fas fa-lightbulb text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Expert Guidance</h3>
+                           <p class="text-gray-600 text-sm">Benefit from Anthony's 25+ years of industry knowledge and insight.</p>
+                       </div>
+                       <div class="benefit-card p-8 text-center">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
+                               <i class="fas fa-cogs text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Seamless Process</h3>
+                           <p class="text-gray-600 text-sm">Efficient in-house underwriting for a smooth and reliable journey.</p>
+                       </div>
+                       <div class="benefit-card p-8 text-center">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
+                               <i class="fas fa-user-check text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Personalized Service</h3>
+                           <p class="text-gray-600 text-sm">Tailored solutions that fit your unique financial situation and goals.</p>
+                       </div>
+                       <div class="benefit-card p-8 text-center">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
+                               <i class="fas fa-rocket text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Fast Closings</h3>
+                           <p class="text-gray-600 text-sm">Our direct lender model ensures quicker turn times and on-time closings.</p>
+                       </div>
+                       <div class="benefit-card p-8 text-center">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
+                               <i class="fas fa-handshake-angle text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Trusted Partner</h3>
+                           <p class="text-gray-600 text-sm">Dedicated support and clear communication from start to finish.</p>
+                       </div>
+                       <div class="benefit-card p-8 text-center">
+                           <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
+                               <i class="fas fa-dollar-sign text-2xl" style="color: var(--primary-color);"></i>
+                           </div>
+                           <h3 class="text-2xl font-semibold mb-4">Competitive Pricing</h3>
+                           <p class="text-gray-600 text-sm">Access to market-leading rates and transparent fee structures.</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="py-16" style="background-color: var(--primary-color);">
+               <div class="container mx-auto px-6 text-center">
+                   <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ready for a Better Mortgage Experience?</h2>
+                   <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Choose Think Mortgage and experience the difference expertise makes.</p>
+                   <div class="flex flex-wrap justify-center gap-4">
+                       <a href="https://link.growsimple.tech/widget/survey/YOUR_SURVEY_ID" target="_blank" class="btn-cta-white">Get Started Today</a>
+                       <a href="#apply-now-link" target="_blank" class="btn-cta-bordered">Apply Now</a>
+                   </div>
+               </div>
+           </div>
+       </section>
+
+        <section id="contact" class="page-section">
+            <div class="banner">
+               <div class="container mx-auto px-6 relative z-10 text-center">
+                   <div class="max-w-2xl mx-auto">
+                       <h1 class="text-5xl md:text-6xl font-bold mb-6"><span class="text-white">Get In Touch</span></h1>
+                       <p class="text-xl mb-8">Connect with Anthony Schlotthauer to discuss your mortgage needs.</p>
+                   </div>
+               </div>
+           </div>
+           <div class="py-20 bg-white">
+               <div class="container mx-auto px-6">
+                   <div class="grid md:grid-cols-2 gap-16">
+                       <div>
+                           <h2 class="text-4xl font-bold mb-6 section-title">Contact Anthony</h2>
+                           <p class="text-lg mb-6">Ready to take the next step towards homeownership? Whether you have questions about loan programs, need personalized advice, or are ready to start the application process, Anthony is here to help.</p>
+                           <div class="space-y-6">
+                                <div class="flex items-start">
+                                   <i class="fas fa-phone-alt text-2xl mr-4" style="color: var(--primary-color);"></i>
+                                   <div>
+                                       <h3 class="text-xl font-semibold mb-1">Call Anthony</h3>
+                                       <p class="text-lg text-gray-600"><a href="tel:+18058132539" class="hover:underline" style="color: var(--text-color);">+1 (805) 813-2539</a></p>
+                                   </div>
+                               </div>
+                               <div class="flex items-start">
+                                   <i class="fas fa-envelope text-2xl mr-4" style="color: var(--primary-color);"></i>
+                                   <div>
+                                       <h3 class="text-xl font-semibold mb-1">Email Anthony</h3>
+                                       <p class="text-lg text-gray-600"><a href="mailto:aschlotthauer@thinkmtg.com" class="hover:underline" style="color: var(--text-color);">aschlotthauer@thinkmtg.com</a></p>
+                                   </div>
+                               </div>
+                                <div class="flex items-start">
+                                   <i class="fas fa-calendar-alt text-2xl mr-4" style="color: var(--primary-color);"></i>
+                                   <div>
+                                       <h3 class="text-xl font-semibold mb-1">Schedule a Consultation</h3>
+                                       <p class="text-lg text-gray-600"><a href="https://link.growsimple.tech/widget/survey/YOUR_SURVEY_ID" target="_blank" class="hover:underline" style="color: var(--text-color);">Book Your Appointment Online</a></p>
+                                   </div>
+                               </div>
+                                <div class="flex items-start">
+                                   <i class="fas fa-file-alt text-2xl mr-4" style="color: var(--primary-color);"></i>
+                                   <div>
+                                       <h3 class="text-xl font-semibold mb-1">Start Your Application</h3>
+                                       <p class="text-lg text-gray-600"><a href="#apply-now-link" target="_blank" class="hover:underline" style="color: var(--text-color);">Begin the Online Application</a></p>
+                                   </div>
+                               </div>
+                           </div>
+                            <div class="mt-10">
+                                <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Business Hours:</h3>
+                                <p class="text-lg text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                <p class="text-lg text-gray-600">Saturday & Sunday: By Appointment</p>
+                            </div>
+                       </div>
+                       <div>
+                           <h2 class="text-4xl font-bold mb-6 section-title">Send a Message</h2>
+                           <form action="YOUR_FORM_SUBMISSION_URL" method="POST" class="space-y-6">
+                               <div>
+                                   <label for="name" class="block text-lg font-medium text-gray-700">Name</label>
+                                   <input type="text" id="name" name="name" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-color focus:border-primary-color">
+                               </div>
+                               <div>
+                                   <label for="email" class="block text-lg font-medium text-gray-700">Email</label>
+                                   <input type="email" id="email" name="email" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-color focus:border-primary-color">
+                               </div>
+                               <div>
+                                   <label for="phone" class="block text-lg font-medium text-gray-700">Phone (Optional)</label>
+                                   <input type="tel" id="phone" name="phone" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-color focus:border-primary-color">
+                               </div>
+                               <div>
+                                   <label for="message" class="block text-lg font-medium text-gray-700">Message</label>
+                                   <textarea id="message" name="message" rows="6" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary-color focus:border-primary-color"></textarea>
+                               </div>
+                               <div>
+                                   <button type="submit" class="btn-primary">Send Message</button>
+                               </div>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+            <div class="py-16" style="background-color: var(--primary-color);">
+               <div class="container mx-auto px-6 text-center">
+                   <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Your Homeownership Journey Starts Here</h2>
+                   <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Reach out today and let's make your dream a reality.</p>
+                   <div class="flex flex-wrap justify-center gap-4">
+                       <a href="https://link.growsimple.tech/widget/survey/YOUR_SURVEY_ID" target="_blank" class="btn-cta-white">Schedule Consultation</a>
+                       <a href="#apply-now-link" target="_blank" class="btn-cta-bordered">Apply Now</a>
+                   </div>
+               </div>
+           </div>
+        </section>
+
+
+    <footer class="footer py-12">
+        <div class="container mx-auto px-6 text-center">
+
+            <div class="flex flex-wrap justify-center gap-6 mb-8">
+                <a href="#" class="hover:underline" onclick="showPage('home', event)">Home</a>
+                <a href="#" class="hover:underline" onclick="showPage('about', event)">About Anthony</a>
+                <a href="#" class="hover:underline" onclick="showPage('services', event)">Loan Programs</a>
+                <a href="#" class="hover:underline" onclick="showPage('why-choose-us', event)">Why Think Mortgage</a>
+                <a href="#" class="hover:underline" onclick="showPage('contact', event)">Contact</a>
+                <a href="#apply-now-link" target="_blank" class="hover:underline">Apply Now</a>
+            </div>
+            <div class="mb-8">
+                <p>&copy; 2024 Think Mortgage. All rights reserved.</p>
+            </div>
+             <div class="nmls-info">
+                Think Mortgage NMLS #125182 | Anthony Schlotthauer NMLS #280499 | <a href="https://www.nmlsconsumeraccess.org" target="_blank">NMLS Consumer Access</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId, event) {
+            event.preventDefault(); // Prevent default link behavior
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active-page');
+            });
+            document.getElementById(pageId).classList.add('active-page');
+
+            // Update active navigation link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            // Find the link that corresponds to the clicked pageId and add active class
+            document.querySelector(`.nav-link[onclick*="showPage('${pageId}'"]`).classList.add('active');
+
+             // Scroll to the top of the page
+             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Set the initial active page and nav link (e.g., home page)
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('home').classList.add('active-page');
+            document.querySelector('.nav-link[onclick*="showPage(\'home\'"]').classList.add('active');
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
